@@ -16,7 +16,7 @@ func Migrate_Values(src, dst string, mKey []string) {
 	cfg2.Host = dst
 	dst_redis := InitRedisMQPool(cfg2)
 	conn2 := dst_redis.Get()
-	defer conn1.Close()
+	defer conn2.Close()
 
 	for _, key := range mKey {
 		key_type, err := redis.String(conn1.Do("TYPE", key))
